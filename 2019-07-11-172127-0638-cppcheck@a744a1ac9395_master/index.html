@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - mate-screensaver</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+    <script language="javascript">
+      function getStyle(el,styleProp) {
+        if (el.currentStyle)
+          var y = el.currentStyle[styleProp];
+        else if (window.getComputedStyle)
+          var y = document.defaultView.getComputedStyle(el,null).getPropertyValue(styleProp);
+        return y;
+      }
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+        if (el.style.display == "block") {
+          el.style.display = "none";
+          mark.innerHTML = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.innerHTML = "[-]";
+        }
+      }
+      function init_expandables() {
+        var elts = document.getElementsByClassName("expandable");
+        for (var i = 0; i < elts.length; i++) {
+          var el = elts[i];
+          var clickable = el.getElementsByTagName("span")[0];
+          var marker = clickable.getElementsByClassName("marker")[0];
+          var content = el.getElementsByClassName("content")[0];
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.onclick = toggle;
+        }
+      }
+      function set_class_display(c, st) {
+        var elements = document.querySelectorAll('.' + c),
+            len = elements.length;
+        for (i = 0; i < len; i++) {
+            elements[i].style.display = st;
+        }
+      }
+      function toggle_class_visibility(id) {
+        var box = document.getElementById(id);
+        set_class_display(id, box.checked ? '' : 'none');
+      }
+    </script>
+  </head>
+  <body onload="init_expandables()">
+      <div id="header">
+        <h1>Cppcheck report - mate-screensaver:  </h1>
+      </div>
+      <div id="menu_index">
+       <p id="filename"><a href="index.html">Defect summary;</a> </p>
+       <table>           <tr><th>Show</th><th>#</th><th>Defect ID</th></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='variableScope' name='variableScope' checked></td><td>16</td><td>variableScope</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='unreadVariable' name='unreadVariable' checked></td><td>14</td><td>unreadVariable</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='redundantAssignment' name='redundantAssignment' checked></td><td>6</td><td>redundantAssignment</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='unusedVariable' name='unusedVariable' checked></td><td>3</td><td>unusedVariable</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='ConfigurationNotChecked' name='ConfigurationNotChecked' checked></td><td>2</td><td>ConfigurationNotChecked</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='memleakOnRealloc' name='memleakOnRealloc' checked></td><td>2</td><td>memleakOnRealloc</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='shadowVar' name='shadowVar' checked></td><td>2</td><td>shadowVar</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='knownConditionTrueFalse' name='knownConditionTrueFalse' checked></td><td>1</td><td>knownConditionTrueFalse</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='missingInclude' name='missingInclude' checked></td><td>1</td><td>missingInclude</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='shadowFunction' name='shadowFunction' checked></td><td>1</td><td>shadowFunction</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='uninitvar' name='uninitvar' checked></td><td>1</td><td>uninitvar</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='unusedLabel' name='unusedLabel' checked></td><td>1</td><td>unusedLabel</td></tr>            <tr><td><input type='checkbox' onclick='toggle_class_visibility(this.id)' id='uselessAssignmentPtrArg' name='uselessAssignmentPtrArg' checked></td><td>1</td><td>uselessAssignmentPtrArg</td></tr>           <tr><td></td><td>51</td><td>total</td></tr>       </table>       <a href="stats.html">Statistics</a></p>
+      </div>
+      <div id="content_index">
+       <table>
+       <tr><th>Line</th><th>Id</th><th>CWE</th><th>Severity</th><th>Message</th></tr>
+       <tr><td colspan='4'><a href='18.html'></a></td></tr>
+         <tr class="missingInclude"><td></td><td>missingInclude</td><td></td><td>information</td><td>Cppcheck cannot find all the include files (use --check-config for details)</td></tr>
+       <tr><td colspan='4'><a href='0.html'>savers/gs-theme-window.c</a></td></tr>
+       <tr class="shadowVar"><td><a href="0.html#line-74">74</a></td><td>shadowVar</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Local variable parent_class shadows outer variable</td></tr>
+       <tr class="shadowVar"><td><a href="0.html#line-136">136</a></td><td>shadowVar</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Local variable parent_class shadows outer variable</td></tr>
+       <tr><td colspan='4'><a href='1.html'>savers/gste-popsquares.c</a></td></tr>
+       <tr class="unreadVariable"><td><a href="1.html#line-235">235</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'wanted' is assigned a value that is never used.</td></tr>
+       <tr><td colspan='4'><a href='2.html'>savers/gste-slideshow.c</a></td></tr>
+       <tr class="variableScope"><td><a href="2.html#line-333">333</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'old_opacity' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="2.html#line-334">334</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'new_opacity' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="2.html#line-568">568</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'i' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='3.html'>src/gs-auth-bsdauth.c</a></td></tr>
+       <tr class="uninitvar"><td><a href="3.html#line-83">83</a></td><td>uninitvar</td><td><a href='https://cwe.mitre.org/data/definitions/908.html'>908</a></td><td>error</td><td class="error">Uninitialized variable: password</td></tr>
+       <tr><td colspan='4'><a href='4.html'>src/gs-auth-pam.c</a></td></tr>
+       <tr class="unreadVariable"><td><a href="4.html#line-280">280</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'res' is assigned a value that is never used.</td></tr>
+       <tr class="redundantAssignment"><td><a href="4.html#line-410">410</a></td><td>redundantAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'status' is reassigned a value before the old one has been used.</td></tr>
+       <tr class="redundantAssignment"><td><a href="4.html#line-454">454</a></td><td>redundantAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'ret' is reassigned a value before the old one has been used.</td></tr>
+       <tr><td colspan='4'><a href='5.html'>src/gs-debug.c</a></td></tr>
+       <tr class="variableScope"><td><a href="5.html#line-135">135</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'args' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='6.html'>src/gs-fade.c</a></td></tr>
+       <tr class="unusedLabel"><td><a href="6.html#line-348">348</a></td><td>unusedLabel</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Label 'test_number' is not used.</td></tr>
+       <tr class="variableScope"><td><a href="6.html#line-571">571</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'info' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='7.html'>src/gs-job.c</a></td></tr>
+       <tr class="ConfigurationNotChecked"><td><a href="7.html#line-250">250</a></td><td>ConfigurationNotChecked</td><td></td><td>information</td><td >Skipping configuration 'HAVE_SETPRIORITY;PRIO_PROCESS' since the value of 'PRIO_PROCESS' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.</td></tr>
+       <tr><td colspan='4'><a href='8.html'>src/gs-listener-dbus.c</a></td></tr>
+       <tr class="uselessAssignmentPtrArg"><td><a href="8.html#line-174">174</a></td><td>uselessAssignmentPtrArg</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>warning</td><td >Assignment of function parameter has no effect outside the function. Did you forget dereferencing it?</td></tr>
+       <tr class="unreadVariable"><td><a href="8.html#line-296">296</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'entry' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="8.html#line-1630">1630</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'listener' is assigned a value that is never used.</td></tr>
+       <tr class="unusedVariable"><td><a href="8.html#line-2316">2316</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: message</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-2316">2316</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'message' can be reduced.</td></tr>
+       <tr class="unusedVariable"><td><a href="8.html#line-2317">2317</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: reply</td></tr>
+       <tr class="variableScope"><td><a href="8.html#line-2317">2317</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'reply' can be reduced.</td></tr>
+       <tr class="unusedVariable"><td><a href="8.html#line-2319">2319</a></td><td>unusedVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Unused variable: reply_iter</td></tr>
+       <tr><td colspan='4'><a href='9.html'>src/gs-lock-plug.c</a></td></tr>
+       <tr class="shadowFunction"><td><a href="9.html#line-573">573</a></td><td>shadowFunction</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >Local variable delete_handler shadows outer function</td></tr>
+       <tr class="variableScope"><td><a href="9.html#line-737">737</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'a' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="9.html#line-737">737</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'b' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="9.html#line-737">737</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'c' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="9.html#line-947">947</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'icon_size' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='10.html'>src/gs-manager.c</a></td></tr>
+       <tr class="unreadVariable"><td><a href="10.html#line-1565">1565</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'n_monitors' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="10.html#line-1595">1595</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'n_monitors' is assigned a value that is never used.</td></tr>
+       <tr><td colspan='4'><a href='11.html'>src/gs-theme-manager.c</a></td></tr>
+       <tr class="ConfigurationNotChecked"><td><a href="11.html#line-66">66</a></td><td>ConfigurationNotChecked</td><td></td><td>information</td><td >Skipping configuration 'XSCREENSAVER_HACK_DIR' since the value of 'XSCREENSAVER_HACK_DIR' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.</td></tr>
+       <tr><td colspan='4'><a href='12.html'>src/gs-watcher-x11.c</a></td></tr>
+       <tr class="redundantAssignment"><td><a href="12.html#line-606">606</a></td><td>redundantAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'desired_server_interval' is reassigned a value before the old one has been used.</td></tr>
+       <tr class="redundantAssignment"><td><a href="12.html#line-611">611</a></td><td>redundantAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'desired_allow_exp' is reassigned a value before the old one has been used.</td></tr>
+       <tr class="redundantAssignment"><td><a href="12.html#line-619">619</a></td><td>redundantAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'desired_server_timeout' is reassigned a value before the old one has been used.</td></tr>
+       <tr><td colspan='4'><a href='13.html'>src/gs-window-x11.c</a></td></tr>
+       <tr class="variableScope"><td><a href="13.html#line-151">151</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'display' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="13.html#line-794">794</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'events' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="13.html#line-872">872</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'secondary_markup' can be reduced.</td></tr>
+       <tr class="variableScope"><td><a href="13.html#line-874">874</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'secondary_label' can be reduced.</td></tr>
+       <tr class="unreadVariable"><td><a href="13.html#line-1031">1031</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'finished' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="13.html#line-1134">1134</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'id' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="13.html#line-1367">1367</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'finished' is assigned a value that is never used.</td></tr>
+       <tr class="redundantAssignment"><td><a href="13.html#line-1528">1528</a></td><td>redundantAssignment</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'window->priv->dialog_shake_in_progress' is reassigned a value before the old one has been used.</td></tr>
+       <tr class="unreadVariable"><td><a href="13.html#line-1635">1635</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'finished' is assigned a value that is never used.</td></tr>
+       <tr><td colspan='4'><a href='14.html'>src/mate-screensaver-command.c</a></td></tr>
+       <tr class="memleakOnRealloc"><td><a href="14.html#line-289">289</a></td><td>memleakOnRealloc</td><td><a href='https://cwe.mitre.org/data/definitions/401.html'>401</a></td><td>error</td><td class="error">Common realloc mistake: 'buffer' nulled but not freed upon failure</td></tr>
+       <tr class="memleakOnRealloc"><td><a href="14.html#line-311">311</a></td><td>memleakOnRealloc</td><td><a href='https://cwe.mitre.org/data/definitions/401.html'>401</a></td><td>error</td><td class="error">Common realloc mistake: 'buffer' nulled but not freed upon failure</td></tr>
+       <tr><td colspan='4'><a href='15.html'>src/mate-screensaver-gl-helper.c</a></td></tr>
+       <tr class="variableScope"><td><a href="15.html#line-39">39</a></td><td>variableScope</td><td><a href='https://cwe.mitre.org/data/definitions/398.html'>398</a></td><td>style</td><td >The scope of the variable 'xvisual' can be reduced.</td></tr>
+       <tr><td colspan='4'><a href='16.html'>src/mate-screensaver-preferences.c</a></td></tr>
+       <tr class="unreadVariable"><td><a href="16.html#line-1311">1311</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'suid' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="16.html#line-1312">1312</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'sgid' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="16.html#line-1313">1313</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'euid' is assigned a value that is never used.</td></tr>
+       <tr class="unreadVariable"><td><a href="16.html#line-1314">1314</a></td><td>unreadVariable</td><td><a href='https://cwe.mitre.org/data/definitions/563.html'>563</a></td><td>style</td><td >Variable 'egid' is assigned a value that is never used.</td></tr>
+       <tr><td colspan='4'><a href='17.html'>src/test-fade.c</a></td></tr>
+       <tr class="knownConditionTrueFalse"><td><a href="17.html#line-91">91</a></td><td>knownConditionTrueFalse</td><td><a href='https://cwe.mitre.org/data/definitions/570.html'>570</a></td><td>style</td><td >Condition 'error' is always false</td></tr>
+       </table>
+      </div>
+      <div id="footer">
+        <p>
+         Cppcheck 1.87 - a tool for static C/C++ code analysis</br>
+         </br>
+         Internet: <a href="http://cppcheck.net">http://cppcheck.net</a></br>
+         IRC: <a href="irc://irc.freenode.net/cppcheck">irc://irc.freenode.net/cppcheck</a></br>
+        <p>
+      </div>
+  </body>
+</html>
